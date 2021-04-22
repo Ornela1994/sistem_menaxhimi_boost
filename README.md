@@ -1,0 +1,1 @@
+"# SISTEM MENAXHIMI PER PUNONJESIT -ndertuar ne Python" 
