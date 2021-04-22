@@ -1,0 +1,77 @@
+{% extends "baza.html" %}
+{% block content %}
+<div id="main">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="card-panel green white-text">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+<div id='date-div'>
+    <form class='center' method="POST" id="forma_data">
+        <div id='both'>
+            <div class="input-field inline" id="first">
+                <label id="data_sot_label"><i class="material-icons">date_range</i>{{ current_user.data}}</label>
+                <input type="text" value="{{ data_sot }}" class="datepicker validate" name="data" id="data_sot_input">
+    
+            </div>
+            <div id="second"><button type="submit"
+                    class="btn waves-effect waves-light  grey darken-4 left btn-small">Perditeso daten</button></div>
+        </div>
+    </form>
+</div>
+
+
+<div class="container">
+
+    <h5 class="white-text">LISTA E PUNONJESVE</h5>
+
+    <table class="white-text">
+        <thead>
+            <tr>
+                <th>EMER</th>
+                <th>MBIEMER</th>
+                <th>POZICION</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for row in table%}
+            <tr>
+                <td>{{ row.emer }}</td>
+                <td>{{ row.mbiemer }}</td>
+                <td>{{ row.pozicion }}</td>
+                <td><a href="{{'/shiko_punonjes/%s'%row.id}}">Shiko</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+
+{% block scripts %}
+<script>
+    function submitform() {
+        document.getElementById("shiko").submit();
+
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.datepicker');
+            var options = { format: 'dd/mm/yyyy' };
+            var instances = M.Datepicker.init(elems, options);
+        });
+
+
+
+
+</script>
+
+{% endblock scripts %}
+
+
+    
+
+</div>
+
+
+{% endblock %}

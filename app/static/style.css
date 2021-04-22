@@ -1,0 +1,64 @@
+#id_link {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+body {
+  background-color: #02142b;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.nav-wrapper {
+  background-color: #390aad;
+}
+
+.datepicker-date-display {
+  background: #390aad;
+}
+
+.datepicker-calendar-container {
+  color: #390aad;
+}
+
+.is-today {
+  color: #ff6f00 !important;
+}
+
+.datepicker-table td.is-selected {
+  background: gray !important;
+}
+
+.datepicker-cancel,
+.datepicker-done {
+  color: #390aad;
+}
+
+#option-select {
+  background-color: #02142b !important;
+  border: none !important;
+  border-bottom: 1px solid #9e9e9e !important;
+  color: #9e9e9e !important;
+}
+
+#both {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#second {
+  margin-top: 30px;
+}
+
+#date-div {
+  max-width: fit-content;
+  margin: 0 auto !important;
+  border-radius: 20px;
+}
+
+#hidden {
+  background-color: #02142b !important;
+}

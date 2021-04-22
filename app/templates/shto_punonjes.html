@@ -1,0 +1,67 @@
+{% extends "baza.html" %}
+{% block content %}
+<div id="main">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="card-panel red white-text">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+<div class="container">
+
+    <h5 class="white-text">SHTO PUNONJES</h5>
+
+    <form method="POST" class="col s12">
+    
+        <div class="input-field">
+            <label>EMRI:</label>
+            <input type="text" value="{{ emer }}" class="validate" name="emer" >
+    
+        </div>
+    
+        <div class="input-field">
+            <label>MBIEMRI:</label>
+            <input type="text" value="{{ mbiemer }}" class="validate" name="mbiemer">
+        
+        </div>
+
+        <div class="input-field">
+            <select id="option-select" class="browser-default blue darken-1" name="pozicion" value="{{ pozicion }}">
+                <option value="" disabled selected>POZICIONI</option>
+                <option value="Mjek">Mjek</option>
+                <option value="Infermier">Infermiere</option>
+                <option value="Sanitare">Sanitare</option>
+            </select>
+        
+        </div>
+    
+        <div class="input-field">
+            <label>PAGA PER ORE (LEK/ORE):</label>
+            <input type="number" class="validate"  value="{{ paga_per_ore }}" name="paga_per_ore">
+        </div>
+    
+        <div class="input-field">
+            <label>DATA E REGJISTRIMIT:</label>
+            <input type="text" value="{{ current_user.data }}" class="validate" name="data_regjistrimit">
+        </div>
+    
+        <button class="btn waves-effect waves-light green darken-1" type="submit">Shto
+            <i class="material-icons right">add</i>
+        </button>
+    
+    </form>
+
+
+
+
+</div>
+{% block scripts %}
+<script src="{{ url_for('static', filename='shto_punonjes.js') }}"></script>
+
+
+{% endblock scripts %}
+
+
+{% endblock %}

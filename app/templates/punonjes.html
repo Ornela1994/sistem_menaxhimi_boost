@@ -1,0 +1,96 @@
+{% extends "baza.html" %}
+{% block content %}
+
+<div class="container">
+
+<div id="main">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="card-panel light-green darken-1 white-text">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% if count > 0 %}
+    <h5 class="white-text">TE DHENAT E PUNONJESIT</h5>
+    {% endif %}
+
+    <table class="white-text">
+        <thead>
+            {% for row in table %}
+            <tr>
+                <th>EMRI</th>
+                <td>{{ row.emer }}</td>
+            </tr>
+            <tr>
+                <th>MBIEMRI</th>
+                <td>{{ row.mbiemer }}</td>
+            </tr>
+            <tr>
+                <th>POZICIONi</th>
+                <td>{{ row.pozicion }}</td>
+
+            </tr>
+            <tr>
+                <th>PAGA PER ORE (LEK/ORE)</th>
+                <td>{{ row.paga_per_ore }}</td>
+
+            
+            </tr>
+            <tr>
+                <th>DATA E REGJISTRIMIT</th>
+                <td>{{ row.data_regjistrimit }}</td>
+            </tr>
+            
+            <tr>
+                <th>ORARET E PUNES</th>
+                <td>{{ row.ore_pune }}</td>
+            </tr>
+            <tr>
+                <th>PAGA (LEKE)</th>
+                <td>{{ row.paga }}</td>
+            
+            </tr>
+            {% endfor %}
+        </thead>
+     
+            
+         
+    
+    
+    </table>
+    {% if dita == dita_e_fundit_e_muajit %}
+    <form action="{{'/shiko_punonjes/%s'%id}}" method="POST" class="center">
+        <a class="waves-effect waves-light btn red modal-trigger" href="#modal">FSHI</a>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <h6>Jeni i sigurt qe doni t'a fshini kete punonjes?</h6>
+            </div>
+            <div class="modal-footer">
+                <a href="{{'/shiko_punonjes%s'%id}}" class="modal-close waves-effect waves-green btn-flat">Anulo</a>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="fshi_punonjes" value="{{ id }}">Fshi</button>
+            </div>
+        </div>
+    </form>
+    {% endif %}
+
+
+
+
+
+
+
+</div>
+
+{% block script %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+    });
+</script>
+{% endblock %}
+
+
+{% endblock %}

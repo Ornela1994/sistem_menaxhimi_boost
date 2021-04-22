@@ -1,0 +1,40 @@
+{% extends "baza.html" %}
+{% block content %}
+
+<div class="container">
+
+    <h5 class='white-text'>Hyrje</h5>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="card-panel teal lighten-2">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+    
+    <form method="POST" class="col s12 white-text">
+    
+        <div class="input-field">
+            <label>Email:</label>
+            <input type="email" class="validate" name="email" required="" aria-required="true">
+    
+        </div>
+    
+        <div class="input-field">
+            <label>Password:</label>
+            <input type="password" class="validate" name="password" required="" aria-required="true">
+        </div>
+    
+        <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Sign In
+        </button>
+    </form>
+    
+    </div>
+
+
+
+
+</div>
+
+
+{% endblock %}
